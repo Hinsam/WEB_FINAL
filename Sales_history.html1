@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>판매내역</title>
+</head>
+<body>
+<header>
+    <h1>중고 요리도구 대여 사이트</h1>
+    <nav>
+        <ul>
+            <li><a href="">홈</a></li>
+            <li><a href="">판매내역</a></li>
+            <li><a href="">거래내역</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="sales-list">
+        <h2>판매내역</h2>
+        <ul>
+            <!-- 판매 상품 목록 -->
+            <li>
+                <img src="photo.jpg" alt="상품 이미지">
+                <div>
+                    <h3>상품 이름, 제목</h3>
+                    <p>닉네임 : 000-1234-5678</p>
+                    <p>주소 : 충청남도 천안시 서북구</p>
+                    <p>대여기간: YYYY-MM-DD</p>
+                    <p> 완료, 대기중 </p>
+                </div>
+            </li>
+            <li>
+                <img src="berry.jpg" alt="상품 이미지">
+                <div>
+                    <h3>상품 이름, 제목</h3>
+                    <p>닉네임 : 000-1234-5678</p>
+                    <p>주소 : 충청남도 천안시 서북구</p>
+                    <p>대여기간: YYYY-MM-DD</p>
+                    <p> 완료, 대기중 </p>
+                </div>
+            </li>
+            <li>
+                <img src="photo.jpg" alt="상품 이미지">
+                <div>
+                    <h3>상품 이름, 제목</h3>
+                    <p>닉네임 : 000-1234-5678</p>
+                    <p>주소 : 충청남도 천안시 서북구</p>
+                    <p>대여기간: YYYY-MM-DD</p>
+                    <p> 완료, 대기중 </p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 상세정보 -->
+    <section id="notice_board">
+        <h2>상세정보</h2>
+        <ul>
+            <li>
+                <img src="photo.jpg" alt="상품 이미지">
+                <div>
+                    <h3>상품 이름, 제목</h3>
+                    <h2> 가격 입력 : 5000냥 </h2>
+                    <p>물건 설명 입력 이물건으로말할것같으면 5억으로도 살수없는 물건입니다.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <p>2023 중고 요리도구 대여 사이트</p>
+</footer>
+</body>
+</html>
