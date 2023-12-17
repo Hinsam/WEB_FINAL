@@ -13,7 +13,7 @@
     Connection con = null;
     Statement stmt = null;
     String driverName = "com.mysql.cj.jdbc.Driver";
-    String dbURL = "jdbc:mysql://localhost:3309/test";
+    String dbURL = "jdbc:mysql://localhost:3306/test";
     try {
         Class.forName(driverName);
         con = DriverManager.getConnection(dbURL, "root", "1234");
