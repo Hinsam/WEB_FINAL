@@ -5,7 +5,7 @@
 <html lang="KR">
 <head>
 	<meta charset="UTF-8">
-	<title>증명서 인쇄 프로그램</title>
+	<title>추가 확인</title>
 	<script>
 		function SubmitForm() {
 			let UserId = document.getElementById('UserId').value;
