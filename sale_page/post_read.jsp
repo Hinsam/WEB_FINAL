@@ -25,7 +25,7 @@
         
         String SaleId = request.getParameter("SaleId");
         
-        String insertQuery = "SELECT * FROM test WHERE SaleId=" + SaleId;
+        String insertQuery = "SELECT * FROM sales WHERE SaleId=" + SaleId;
         
         PreparedStatement psmt = connection.prepareStatement(insertQuery);
         
@@ -62,6 +62,7 @@
             	<tr>
             	    <td colspan="2">
             	        <button type=button onclick="location.href='post_list.jsp'">목록으로</button>
+            	        <button type=button onclick="location.href='SubmitForm.jsp'">요청하기</button>
             	    </td>
             	</tr>
             	<%            	

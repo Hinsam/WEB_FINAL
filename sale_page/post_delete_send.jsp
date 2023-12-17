@@ -17,16 +17,20 @@ try
     
     String SaleId = request.getParameter("SaleId");
     
-    String insertQuery = "DELETE FROM test WHERE SaleId=" + SaleId;
+    // Delete related records in the "trade_request" table
+    String deleteTradeRequestQuery = "DELETE FROM trade_requests WHERE SaleId=" + SaleId;
+    PreparedStatement tradeRequestPsmt = connection.prepareStatement(deleteTradeRequestQuery);
+    tradeRequestPsmt.executeUpdate();
     
- 	PreparedStatement psmt = connection.prepareStatement(insertQuery);
-
-    psmt.executeUpdate();
- 	
+    // Delete the record from the "test" table
+    String deleteTestQuery = "DELETE FROM sales WHERE SaleId=" + SaleId;
+    PreparedStatement testPsmt = connection.prepareStatement(deleteTestQuery);
+    testPsmt.executeUpdate();
+    
     response.sendRedirect("post_list.jsp");
 }
 catch (Exception ex)
 {
-	out.println("오류가 발생했습니다. 오류 메시지 : " + ex.getMessage());
+    out.println("오류가 발생했습니다. 오류 메시지 : " + ex.getMessage());
 }
 %>

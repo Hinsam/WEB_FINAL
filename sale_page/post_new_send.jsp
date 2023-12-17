@@ -29,7 +29,7 @@ try
 	//게시글 번호를 결정하기 위한 임시 정수형 변수
 	int SaleId = 0;
 	
-	String insertQuery = "SELECT MAX(SaleId) from test";
+	String insertQuery = "SELECT MAX(SaleId) from sales";
 	
 	PreparedStatement psmt = connection.prepareStatement(insertQuery);
 	
@@ -40,7 +40,7 @@ try
 		SaleId = result.getInt("MAX(SaleId)") + 1;
 	}
 	
-	insertQuery = "INSERT INTO test(SaleId, ItemName, UserId, ItemDescription, SaleDate, SalePrice) VALUES (?, ?, ?, ?, ?, ?)";
+	insertQuery = "INSERT INTO sales(SaleId, ItemName, UserId, ItemDescription, SaleDate, SalePrice) VALUES (?, ?, ?, ?, ?, ?)";
 	
 	psmt = connection.prepareStatement(insertQuery);
 	

@@ -25,7 +25,7 @@
         
         String SaleId = request.getParameter("SaleId");
         
-        String insertQuery = "SELECT * FROM test WHERE SaleId=" + SaleId;
+        String insertQuery = "SELECT * FROM sales WHERE SaleId=" + SaleId;
         
         PreparedStatement psmt = connection.prepareStatement(insertQuery);
         

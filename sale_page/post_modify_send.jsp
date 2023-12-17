@@ -23,7 +23,7 @@ try
     
     String SaleId = request.getParameter("SaleId");
     
-    String insertQuery = "SELECT * FROM test WHERE SaleId=" + SaleId;
+    String insertQuery = "SELECT * FROM sales WHERE SaleId=" + SaleId;
     
  	PreparedStatement psmt = connection.prepareStatement(insertQuery);
  	
@@ -31,7 +31,7 @@ try
  	
  	while(result.next())
  	{
-        insertQuery = "UPDATE test set ItemName=?, UserId=?, ItemDescription=?, SaleDate=?, SalePrice=? WHERE SaleId=" + SaleId;
+        insertQuery = "UPDATE sales set ItemName=?, UserId=?, ItemDescription=?, SaleDate=?, SalePrice=? WHERE SaleId=" + SaleId;
  	    
  	    psmt = connection.prepareStatement(insertQuery);
         

@@ -25,7 +25,7 @@
 				Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
 				
 				//MYSQL로 전송하기 위한 쿼리문 선언
-				String insertQuery = "SELECT * FROM test ORDER BY SaleId DESC";
+				String insertQuery = "SELECT * FROM sales ORDER BY SaleId DESC";
 				PreparedStatement psmt = connection.prepareStatement(insertQuery);
 				ResultSet result = psmt.executeQuery();%>
 				
