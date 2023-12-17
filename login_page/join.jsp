@@ -10,6 +10,7 @@
     String Id = request.getParameter("Id");
     String name = request.getParameter("name");
     String password = request.getParameter("password");
+    String phone = request.getParameter("phone");
 	
     try {
         String jdbcUrl = "jdbc:mysql://localhost:3306/test";
@@ -20,13 +21,14 @@
         conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 
         // SQL 쿼리 작성
-        String sql = "INSERT INTO user (Id, name, Email, password) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO user (Id, name, Email, password, phone) VALUES (?, ?, ?, ?, ?)";
         stmt = conn.prepareStatement(sql);
         //rs = stmt.executeQuery();
         stmt.setString(1, Id);
         stmt.setString(2, name);
         stmt.setString(3, Email);
         stmt.setString(4, password);
+        stmt.setString(5, phone);
 
         int rowsAffected = stmt.executeUpdate();
 
