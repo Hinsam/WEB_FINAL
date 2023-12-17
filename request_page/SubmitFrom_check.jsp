@@ -53,5 +53,6 @@
         if (con != null) con.close();
     }
 %>
+<a href="trade_see.jsp">목록으로 돌아가기</a>
 </body>
 </html>
