@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+	<meta charset="utf-8">
     <title>회원가입</title>
     <style>
         * {
@@ -58,28 +59,6 @@
           outline: none;
         }
 
-        .gender {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 140px;
-          height: 23.94px;
-          margin-top: 50px;
-        }
-
-        .gender input {
-          width: 20px;
-          height: 19.95px;
-          background: #ebebeb;
-          border: 1px solid #d2d2d2;
-        }
-
-        .gender label {
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
-        }
-
         .agree-check {
           width: 454px;
           height: 21.06px;
@@ -114,6 +93,40 @@
           border-radius: 10px;
         }
     </style>
+    <script>
+		function passwordCheck() {
+            var pass = document.getElementById("password").value;
+            var pass_check = document.getElementById("confirmPassword").value;
+            var btn = document.getElementById("button");
+            if (pass_check != pass) {
+				btn.disabled = true;
+                alert("비밀번호가 동일하지 않습니다.");
+            }
+            else{
+				btn.disabled = false;
+			}
+        }
+        var xmlhttp = false;
+   		if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.overrideMimeType('text/xml');
+   		 }
+
+   		function Data() {
+      	  var Id = document.getElementById('Id').value;
+      	  var url = 'IdCheck.jsp?Id=' + Id;
+       	  xmlhttp.open('GET', url, true);
+       	  xmlhttp.onreadystatechange = getData;
+       	  xmlhttp.send(null);
+  		}
+
+  	  function getData() {
+   		 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+       		 document.getElementById('ICheck').innerHTML = xmlhttp.responseText;
+  		  }
+	  }
+
+	</script>
   </head>
   <body>
     <section class="container">
@@ -124,30 +137,17 @@
           <section>정보를 입력해주세요</section>
         </section>
         <br><br>
-        <form action="updatePro.jsp" method="post">
-        <section class="user-info">
-          <input type="email" id="email" placeholder="* 이메일" /><br><br>
-          <input type="text" id="name" placeholder="* 이름" /><br><br>
-          <input type="text" id="ID" placeholder="* 아이디" /><br><br>
-          <input type="password" id="password" placeholder="* 비밀번호" /><br><br>
-          <input type="password" id="confirmPassword" placeholder="* 비밀번호 확인" /><br><br>
-        </section>
+        <form action="join.jsp" method="post" class="user-info">
 
-        <section class="gender">
-          <input type="radio" name="gender" />
-          <label for="women">여성</label>
-          <input type="radio" name="gender" />
-          <label for="men">남성</label>
-        </section>
+          <input type="email" id="email" name ="Email" placeholder="* 이메일" /><br><br>
+          <input type="text" id="name" name = "name" placeholder="* 이름" /><br><br>
+          <input type="text" id="Id" name = "Id" onblur="Data()" placeholder="* 아이디" /><br>
+          <label id="ICheck" style="color: #C55A11; font-size: 10px;"></label><br>
+          <input type="password" id="password" name = "password" placeholder="* 비밀번호" /><br><br>
+          <input type="password" id="confirmPassword" onblur="passwordCheck()" placeholder="* 비밀번호 확인" /><br><br>
+          <input type="tel" id="phone" placeholder="* 핸드폰 번호를 입력하시오." />
 
-        <section class="agree-check">
-          <input type="checkbox" /> 이용약관 개인정보 수집 및 이용, 마케팅 활용
-          선택에 모두 동의합니다.
-        </section>
-
-        <section class="btn">
-          <button type="submit">가입하기</button>
-        </section>
+          <button class="button" id="button" type="submit">가입하기</button>
 
       </form>
 
