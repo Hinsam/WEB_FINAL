@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+	<meta charset="utf-8">
+    <title>회원가입</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          font-family: "Noto Sans CJK KR";
+          font-style: normal;
+        }
+
+        body {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+        }
+
+
+        .member-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 470px;
+          height: 818px;
+          margin-top: 72px;
+          margin-bottom: 70px;
+        }
+
+        .header {
+          width: 466px;
+          height: 94px;
+          font-weight: 700;
+          font-size: 27px;
+          line-height: 47px;
+          color: #574438;
+          text-align: center;
+        }
+
+        .user-info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 466px;
+          margin-top: 21px;
+        }
+
+        .user-info input {
+          border: none;
+          border-bottom: 1px solid #cfcfcf;
+          width: 100%;
+          height: 30px;
+          margin-top: 8px;
+          padding: 5px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          color: #797979;
+          outline: none;
+        }
+
+        .agree-check {
+          width: 454px;
+          height: 21.06px;
+          margin-top: 52.05px;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 21px;
+          color: #000000;
+        }
+
+        .btn {
+          display: flex;
+          flex-direction: column;
+          margin-top: 60px;
+          width: 470px;
+          height: 80px;
+          border-top: 1px solid #e6e6e6;
+        }
+
+        button {
+          margin-top: 30px;
+          width: 470px;
+          height: 75px;
+          font-weight: 400;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 27px;
+          text-align: center;
+          color: #ffffff;
+          background: #F19759;
+          border: 1px solid #F19759;
+          border-radius: 10px;
+        }
+    </style>
+    <script>
+		function passwordCheck() {
+            var pass = document.getElementById("password").value;
+            var pass_check = document.getElementById("confirmPassword").value;
+            var btn = document.getElementById("button");
+            if (pass_check != pass) {
+				btn.disabled = true;
+                alert("비밀번호가 동일하지 않습니다.");
+            }
+            else{
+				btn.disabled = false;
+			}
+        }
+        var xmlhttp = false;
+   		if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.overrideMimeType('text/xml');
+   		 }
+
+   		function Data() {
+      	  var Id = document.getElementById('Id').value;
+      	  var url = 'IdCheck.jsp?Id=' + Id;
+       	  xmlhttp.open('GET', url, true);
+       	  xmlhttp.onreadystatechange = getData;
+       	  xmlhttp.send(null);
+  		}
+
+  	  function getData() {
+   		 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+       		 document.getElementById('ICheck').innerHTML = xmlhttp.responseText;
+  		  }
+	  }
+
+	</script>
+  </head>
+  <body>
+    <section class="container">
+      <section class="member-container">
+
+        <section class="header">
+          <section>회원 가입을 위해</section>
+          <section>정보를 입력해주세요</section>
+        </section>
+        <br><br>
+        <form action="join.jsp" method="post" class="user-info">
+
+          <input type="email" id="email" name ="Email" placeholder="* 이메일" /><br><br>
+          <input type="text" id="name" name = "name" placeholder="* 이름" /><br><br>
+          <input type="text" id="Id" name = "Id" onblur="Data()" placeholder="* 아이디" /><br>
+          <label id="ICheck" style="color: #C55A11; font-size: 10px;"></label><br>
+          <input type="password" id="password" name = "password" placeholder="* 비밀번호" /><br><br>
+          <input type="password" id="confirmPassword" onblur="passwordCheck()" placeholder="* 비밀번호 확인" /><br><br>
+
+          <button class="button" id="button" type="submit">가입하기</button>
+
+      </form>
+
+      </section>
+
+    </section>
+
+  </body>
+</html>
