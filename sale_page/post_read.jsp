@@ -23,9 +23,9 @@
         
         request.setCharacterEncoding("UTF-8");
         
-        String Saleid = request.getParameter("Saleid");
+        String SaleId = request.getParameter("SaleId");
         
-        String insertQuery = "SELECT * FROM test WHERE Saleid=" + Saleid;
+        String insertQuery = "SELECT * FROM test WHERE SaleId=" + SaleId;
         
         PreparedStatement psmt = connection.prepareStatement(insertQuery);
         
@@ -37,7 +37,7 @@
             {%>
             	<tr>
             	    <td>판매번호</td>
-            	    <td><%=result.getInt("Saleid") %></td>
+            	    <td><%=result.getInt("SaleId") %></td>
             	</tr>
             	<tr>
             	    <td>판매품</td>

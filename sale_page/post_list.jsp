@@ -55,10 +55,10 @@
 						<tr>
 							<!-- db에서 받아온 사용자 아이디 입력 -->
 							<td><%=result.getInt("SaleId") %></td>
-							<td><%=result.getString("ItemName") %></td>
+							<td><a href="post_read.jsp?SaleId=<%=result.getString("SaleId") %>"><%=result.getString("ItemName") %></td>
 							<!-- db에서 받아온 물품 입력 -->
 							<td><%=result.getString("UserId") %></td>
-							<td><a href="post_read.jsp?SaleId=<%=result.getString("SaleId") %>"><%=result.getString("ItemDescription") %></a></td>
+							<td><%=result.getString("ItemDescription") %></a></td>
 							<td><%=result.getString("SaleDate") %></td>
 							<td><%=result.getString("SalePrice") %></td>
 							<td>
