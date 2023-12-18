@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>바</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #F19759;
+        }
+
+        .sidebar {
+            position: absolute;
+            width: 60px;
+            height: 100vh;
+            background: #ffffff;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .sidebar:hover {
+            width: 300px;
+        }
+
+        .sidebar ul {
+            position: relative;
+            height: 100vh;
+        }
+
+        .sidebar ul li {
+            list-style: none;
+        }
+
+        .sidebar ul li:hover {
+            background: #f3f3f3;
+        }
+
+        .sidebar ul li a {
+            position: relative;
+            display: flex;
+            white-space: none;
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        .sidebar ul li a .icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            color: #333333;
+        }
+
+        .sidebar ul li.logo {
+            margin-bottom: 50px;
+        }
+
+        .sidebar ul li.logo .icon {
+            font-size: 2em;
+        }
+
+        .sidebar ul li.logo .text {
+            font-size: 1.2em;
+            font-width: 500;
+        }
+
+        .sidebar ul li.logo:hover {
+            background: #ffffff;
+        }
+
+        .sidebar ul li:hover a .text {
+            color: #007bff;
+            font-size: 110%;
+        }
+
+        .sidebar ul li a .text {
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bottom .imgBox {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .bottom .imgBox img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+<nav class="sidebar">
+    <ul>
+        <li class="logo">
+            <a href="#">
+                <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                <span class="text">홈</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"></span>
+                <span class="text">대여해드립니다.</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"></span>
+                <span class="text">대여내역</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"></span>
+                <span class="text">거래조회</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"></span>
+                <span class="text">조회</span>
+            </a>
+        </li>
+        <div class="bottom">
+            <li>
+                <a href="#">
+        <span class="icon">
+        <div class="imgBox">
+        <!-- 이미지 태그 . -->
+        </div>
+        </span>
+                    <span class="text">프로필.</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"></span>
+                    <span class="text">로그아웃</span>
+                </a>
+            </li>
+        </div>
+    </ul>
+</nav>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
