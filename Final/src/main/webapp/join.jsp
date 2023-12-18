@@ -15,7 +15,7 @@
     try {
         String jdbcUrl = "jdbc:mysql://localhost:3306/test";
         String dbId = "root";
-        String dbPass = "1234";
+        String dbPass = "0000";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);

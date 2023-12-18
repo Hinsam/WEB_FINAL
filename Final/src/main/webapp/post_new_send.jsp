@@ -13,7 +13,7 @@ try
     Class.forName("com.mysql.jdbc.Driver");
     String db_address = "jdbc:mysql://localhost:3306/test";
     String db_username = "root";
-    String db_pwd = "1234";
+    String db_pwd = "0000";
     Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
     
     //문자열의 인코딩 방식 결정

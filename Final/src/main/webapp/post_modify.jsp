@@ -9,6 +9,75 @@
 <head>
 <meta charset="utf-8">
 <title>글 수정</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            color: #000000;
+            background: #F19759;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #F19759;
+            padding: 20px;
+        }
+        
+        table td {
+            padding: 10px;
+        }
+        
+        input[type="text"],
+        textarea,
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            color: #ffffff;
+        }
+        
+        button[type="submit"] {
+            background-color: #F19759;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #e1833b;
+        }
+        
+        button[type="button"] {
+            background-color: #555;
+        }
+        
+        button[type="button"]:hover {
+            background-color: #333;
+        }
+        
+        button[type="reset"] {
+            background-color: #888;
+        }
+        
+        button[type="reset"]:hover {
+            background-color: #666;
+        }
+    </style>
 </head>
 <body>
     <h1>글 수정</h1>
@@ -18,7 +87,7 @@
         Class.forName("com.mysql.jdbc.Driver");
         String db_address = "jdbc:mysql://localhost:3306/test";
         String db_username = "root";
-        String db_pwd = "1234";
+        String db_pwd = "0000";
         Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
         
         request.setCharacterEncoding("UTF-8");

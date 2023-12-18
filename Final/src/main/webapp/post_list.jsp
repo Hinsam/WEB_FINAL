@@ -2,79 +2,95 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>∞‘Ω√±€ ∏Ò∑œ</title>
+<title>Í≤åÏãúÍ∏Ä Î™©Î°ù</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #F19759;
+    color: #ffffff;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  button {
+    color: #ffffff;
+    background-color: #F19759;
+    border: 1px solid #F19759;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-	<form action="post_read.jsp" method="get">
-		<h1>∞‘Ω√±€ ∏Ò∑œ</h1>
-		<%
-			try
-			{
-				//JDBC µÂ∂Û¿Ãπˆ ø¨∞·
-				Class.forName("com.mysql.jdbc.Driver");
-				String db_address = "jdbc:mysql://localhost:3306/test";
-				String db_username = "root";
-				String db_pwd = "1234";
-				
-				Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
-				
-				//MYSQL∑Œ ¿¸º€«œ±‚ ¿ß«— ƒı∏ÆπÆ º±æ
-				String insertQuery = "SELECT * FROM sales ORDER BY SaleId DESC";
-				PreparedStatement psmt = connection.prepareStatement(insertQuery);
-				ResultSet result = psmt.executeQuery();%>
-				
-				<table border="1">
-					<tr>
-						<td colspan="5">
-							<h3>∞‘Ω√±€ ¡¶∏Ò ≈¨∏ØΩ√ ªÛºº ø≠∂˜ ∞°¥…</h3>
-						</td>
-					</tr>
-					<tr>
-					    <td colspan="5">
-					        <button type="button" value="Ω≈±‘ ±€ ¿€º∫" onClick="location.href='post_new.jsp'">Ω≈±‘ ±€ ¿€º∫</button>
-					    </td>
-					</tr>
-					<tr>
-						<td>∆«∏≈π¯»£</td>
-						<td>∆«∏≈«∞</td>
-						<td>ID</td>
-						<td>º≥∏Ì</td>
-						<td>±‚«—</td>
-						<td>∞°∞›</td>
-					</tr>
-					<%
-					//πﬁæ∆ø¬ ¡§∫∏ ¿‘∑¬»ƒ, «œ≥™æø ƒøº≠∏¶ ¥Ÿ¿Ω¿∏∑Œ ø≈±Ë
-					while (result.next())
-					{%>
-						<tr>
-							<!-- dbø°º≠ πﬁæ∆ø¬ ªÁøÎ¿⁄ æ∆¿Ãµ ¿‘∑¬ -->
-							<td><%=result.getInt("SaleId") %></td>
-							<td><a href="post_read.jsp?SaleId=<%=result.getString("SaleId") %>"><%=result.getString("ItemName") %></td>
-							<!-- dbø°º≠ πﬁæ∆ø¬ π∞«∞ ¿‘∑¬ -->
-							<td><%=result.getString("UserId") %></td>
-							<td><%=result.getString("ItemDescription") %></a></td>
-							<td><%=result.getString("SaleDate") %></td>
-							<td><%=result.getString("SalePrice") %></td>
-							<td>
-								<button type="button" value="ºˆ¡§" onClick="location.href='post_modify.jsp?SaleId=<%=result.getString("SaleId") %>'">ºˆ¡§</button>
-								<button type="button" value="ªË¡¶" onClick="location.href='post_delete_send.jsp?SaleId=<%=result.getString("SaleId") %>'">ªË¡¶</button>
-							</td>
-						</tr>
-					<%
-					}%>
-				</table>
-			<%
-			}
-			catch (Exception ex)
-			{
-				out.println("ø¿∑˘∞° πﬂª˝«ﬂΩ¿¥œ¥Ÿ. ø¿∑˘ ∏ﬁΩ√¡ˆ : " + ex.getMessage());
-			}%>
-	</form>
+<h1 style="text-align: center;">Í≤åÏãúÍ∏Ä Î™©Î°ù</h1>
+<button type="button" onClick="location.href='post_new.jsp'">Ïã†Í∑ú Í∏Ä ÏûëÏÑ±</button>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ÌåêÎß§Î≤àÌò∏</th>
+            <th>ÌåêÎß§Ìíà</th>
+            <th>ID</th>
+            <th>ÏÑ§Î™Ö</th>
+            <th>Í∏∞Ìïú</th>
+            <th>Í∞ÄÍ≤©</th>
+            <th>Ïï°ÏÖò</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% 
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                String db_address = "jdbc:mysql://localhost:3306/test";
+                String db_username = "root";
+                String db_pwd = "0000";
+                
+                Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
+                
+                String insertQuery = "SELECT * FROM sales ORDER BY SaleId DESC";
+                PreparedStatement psmt = connection.prepareStatement(insertQuery);
+                ResultSet result = psmt.executeQuery();
+                
+                while (result.next()) {
+        %>
+        <tr>
+            <td><%=result.getInt("SaleId") %></td>
+            <td><a href="post_read.jsp?SaleId=<%=result.getString("SaleId") %>"><%=result.getString("ItemName") %></a></td>
+            <td><%=result.getString("UserId") %></td>
+            <td><%=result.getString("ItemDescription") %></td>
+            <td><%=result.getString("SaleDate") %></td>
+            <td><%=result.getString("SalePrice") %></td>
+            <td>
+                <form action="post_modify.jsp" method="get">
+                    <input type="hidden" name="SaleId" value="<%=result.getString("SaleId") %>">
+                    <button type="submit">ÏàòÏ†ï</button>
+                </form>
+                <form action="post_delete_send.jsp" method="get">
+                    <input type="hidden" name="SaleId" value="<%=result.getString("SaleId") %>">
+                    <button type="submit">ÏÇ≠Ï†ú</button>
+                </form>
+            </td>
+        </tr>
+        <% 
+                }
+            } catch (Exception ex) {
+                out.println("Ïò§Î•òÍ∞Ä Î∞úÏÉùÌñàÏäµÎãàÎã§. Ïò§Î•ò Î©îÏãúÏßÄ : " + ex.getMessage());
+            }
+        %>
+    </tbody>
+</table>
 </body>
 </html>
