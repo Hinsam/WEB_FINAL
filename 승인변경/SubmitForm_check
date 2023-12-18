@@ -1,0 +1,52 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<%
+    request.setCharacterEncoding("UTF-8");
+    Connection con = null;
+    PreparedStatement pstmt = null;
+    String driverName = "com.mysql.cj.jdbc.Driver";
+    String dbURL = "jdbc:mysql://localhost:3309/test";
+
+    try {
+        Class.forName(driverName);
+        con = DriverManager.getConnection(dbURL, "root", "1234");
+
+        String userIdToApprove = request.getParameter("UserIdToApprove");
+        String saleIdToApprove = request.getParameter("SaleIdToApprove");
+        String newApprovalStatus = request.getParameter("NewApprovalStatus");
+
+        if (userIdToApprove != null && saleIdToApprove != null && newApprovalStatus != null) {
+            String updateQuery = "UPDATE trade_requests SET approval = ? WHERE UserId = ? AND SaleId = ?";
+            pstmt = con.prepareStatement(updateQuery);
+            pstmt.setString(1, newApprovalStatus);
+            pstmt.setString(2, userIdToApprove);
+            pstmt.setString(3, saleIdToApprove);
+
+            int updateResult = pstmt.executeUpdate();
+            if (updateResult > 0) {
+                out.println("<p>승인 상태가 업데이트되었습니다.</p>");
+            } else {
+                out.println("<p>승인 상태 업데이트에 실패했습니다.</p>");
+            }
+        } else {
+            out.println("<p>필요한 데이터가 제공되지 않았습니다.</p>");
+        }
+    } catch (Exception e) {
+        out.println("<p>데이터베이스 처리 중 오류가 발생했습니다.</p>");
+        out.println(e);
+        e.printStackTrace();
+    } finally {
+        if (pstmt != null) pstmt.close();
+        if (con != null) con.close();
+    }
+%>
+</body>
+</html>
