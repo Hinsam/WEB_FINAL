@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-<html>
+<html> 
 <head>
     <title>레코드 삭제</title>
 </head>
@@ -14,7 +14,7 @@
     String dbURL = "jdbc:mysql://localhost:3306/test";
     try {
         Class.forName(driverName);
-        con = DriverManager.getConnection(dbURL, "root", "1234");
+        con = DriverManager.getConnection(dbURL, "root", "0000");
 
         String deleteQuery = "DELETE FROM trade_requests WHERE UserId = ? AND SaleId = ?";
         pstmt = con.prepareStatement(deleteQuery);
