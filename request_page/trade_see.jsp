@@ -1,21 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>데이터베이스 예제 : 데이터 조회 및 삭제</title>
+  <title>데이터 조회 및 삭제</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    h2 {
+      background-color: #F19759;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 25px;
+      width: 700px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background-color: #F19759;
+      color: #fff;
+    }
+    td {
+      text-align: center;
+      background-color: #fff;
+      color: #333;
+    }
+    a {
+      color: #F19759;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
 <body>
-<%@ page import="java.sql.*" %>
 <h2>데이터 조회 및 삭제</h2>
 <%
   Connection con = null;
+  PreparedStatement pstmt = null;
   Statement stmt = null;
   String driverName = "com.mysql.cj.jdbc.Driver";
   String dbURL = "jdbc:mysql://localhost:3309/test";
   try {
     Class.forName(driverName);
     con = DriverManager.getConnection(dbURL, "root", "1234");
+
+    // 삭제 로직
+    String userIdToDelete = request.getParameter("UserId");
+    String saleIdToDelete = request.getParameter("SaleId");
+    if (userIdToDelete != null && saleIdToDelete != null) {
+      String deleteQuery = "DELETE FROM trade_requests WHERE UserId = ? AND SaleId = ?";
+      pstmt = con.prepareStatement(deleteQuery);
+      pstmt.setString(1, userIdToDelete);
+      pstmt.setString(2, saleIdToDelete);
+      int deleteResult = pstmt.executeUpdate();
+      if (deleteResult > 0) {
+        out.println("<p>레코드가 삭제되었습니다.</p>");
+      } else {
+        out.println("<p>레코드 삭제에 실패했습니다.</p>");
+      }
+    }
+
+    // 조회 로직
     stmt = con.createStatement();
     ResultSet result = stmt.executeQuery("SELECT * FROM trade_requests;");
 %>
@@ -38,16 +108,17 @@
     <td align=center><%= result.getString("RentalStartDate") %></td>
     <td align=center><%= result.getString("RentalEndDate") %></td>
     <td align=center>
-      <a href="trade_delete.jsp?UserId=<%= result.getString("UserId") %>&SaleId=<%= result.getString("SaleId") %>">삭제</a>
+      <a href="trade_see.jsp?UserId=<%= result.getString("UserId") %>&SaleId=<%= result.getString("SaleId") %>">삭제</a>
     </td>
   </tr>
   <% }
     result.close();
   } catch(Exception e) {
-    out.println("<p>데이터베이스 조회 중 오류가 발생했습니다.</p>");
+    out.println("<p>데이터베이스 처리 중 오류가 발생했습니다.</p>");
     out.println("<p>" + e + "</p>");
     e.printStackTrace();
   } finally {
+    if (pstmt != null) pstmt.close();
     if (stmt != null) stmt.close();
     if (con != null) con.close();
   }
