@@ -14,7 +14,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 20px;
-            color: #000000;
+            color: #574438;
             background: #F19759;
         }
         
@@ -39,7 +39,7 @@
         input[type="text"],
         textarea,
         input[type="date"] {
-            width: 100%;
+            width: calc(100% - 18px);
             padding: 8px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -129,7 +129,7 @@
                     <td colspan="2">
                         <button type="submit">수정</button>
                         <button type="button" onclick="location.href='post_list.jsp'">목록으로</button>
-                        <button type="reset">원상복구</button>
+                        <button type="reset">내용리셋</button>
                     </td>
                 </tr>
             </table>

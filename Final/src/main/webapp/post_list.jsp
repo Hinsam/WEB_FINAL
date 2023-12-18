@@ -10,6 +10,9 @@
 <meta charset="utf-8">
 <title>게시글 목록</title>
 <style>
+  body {
+  	color: #574438;
+  }
   table {
     border-collapse: collapse;
     width: 100%;
@@ -32,6 +35,10 @@
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
+  }
+  button:hover {
+    background-color: #ffffff;
+    color: #F19759;
   }
 </style>
 </head>

@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: #574438;
         }
 
         h1 {

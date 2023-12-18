@@ -15,6 +15,7 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
+            color: #574438;
         }
 
         form {
@@ -29,7 +30,7 @@
 
         h1 {
             text-align: center;
-            color: #ffffff;
+            color: #574438;
             font-size: 2em;
             margin-top: 0; /* 제목의 위 여백 제거 */
             margin-bottom: 40px; /* 제목의 아래 여백 추가 */
@@ -48,9 +49,9 @@
         input[type="date"] {
             width: calc(100% - 40px);
             padding: 16px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
             margin-bottom: 20px;
+            border: none;
+          	border-bottom: 1px solid #cfcfcf;
         }
 
         button {
