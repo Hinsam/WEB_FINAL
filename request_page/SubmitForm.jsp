@@ -1,5 +1,5 @@
 <%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %> 
 <%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -94,10 +94,10 @@
 		Connection con = null;
 		PreparedStatement insertPstmt = null;
 		String driverName = "com.mysql.cj.jdbc.Driver";
-		String dbURL = "jdbc:mysql://localhost:3309/test";
+		String dbURL = "jdbc:mysql://localhost:3306/test";
 		try {
 			Class.forName(driverName);
-			con = DriverManager.getConnection(dbURL, "root", "1234");
+			con = DriverManager.getConnection(dbURL, "root", "0000");
 
 			String userId = request.getParameter("UserId");
 			String saleId = request.getParameter("SaleId");
